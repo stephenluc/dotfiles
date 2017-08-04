@@ -2,4 +2,4 @@
 
 cp ~/.vimrc ./
 
-git status
+git s

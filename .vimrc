@@ -54,6 +54,9 @@ set autochdir " Auto change dir to current file
 set title
 set ttyfast
 
+" Remap `jj` to Esc
+imap jj <Esc>
+
 set grepprg=ack\ -a " ack to search
 
 " Search
@@ -72,7 +75,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ctrlp
-let g:ctrlp_map ='<F2>'
+let g:ctrlp_map ='<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 if exists("g:ctrlp_user_command")
