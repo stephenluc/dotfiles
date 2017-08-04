@@ -1,0 +1,36 @@
+[alias]
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Commit all changes
+    ca = !git commit -av
+
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+[apply]
+
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
+
+[core]
+
+    editor = vim
+
+[user]
+
+    name = stephenluc
+    email = stephenluc96@gmail.com
+
+[color "diff"]
+
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
