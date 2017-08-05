@@ -4,9 +4,10 @@ Since I am still in school and switch often between personal, school and work ma
 
 I use this to keep consistency between all my git and vim shortcuts.
 
-There a 2 primary scripts:
-* `setup_settings.sh` - run this on any new machine to import settings
-* `upload_settings.sh` - run this if new local changes need to be uploaded back into this repo
+There a 3 primary scripts for transferring the settings around:
+* `setup_settings` - run this on any new machine to import initial settings
+* `push_settings` - run this if new settings need to be pushed onto local machine
+* `upload_settings` - run this if new local changes need to be uploaded back into the repo
 
 Most of the settings and layouts I have were gathered from:
 1. Co-workers
