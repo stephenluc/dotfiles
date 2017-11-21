@@ -3,5 +3,6 @@
 cp .gitconfig ~/
 cp -rf .vim ~/
 cp .vimrc ~/
+cp .tmux.conf ~/
 
 vim +PluginInstall +qall

@@ -4,5 +4,6 @@ cp ~/.vimrc ./
 cp -rf ~/.vim ./
 rm .vim/.netrwhist
 cp ~/.gitconfig ./
+cp ~/.tmux.conf ./
 
 git s
