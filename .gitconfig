@@ -8,6 +8,10 @@
 
     # Switch to a branch, creating it if necessary
     go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    
+    # Shows a tree of the commits for current repo
+    ssl = log --oneline --decorate --all --graph
+
 
 [apply]
 
