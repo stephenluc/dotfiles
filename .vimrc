@@ -21,6 +21,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'RRethy/vim-illuminate'
 
 " Backend
 Plugin 'hynek/vim-python-pep8-indent'
