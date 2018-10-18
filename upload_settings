@@ -2,6 +2,7 @@
 
 cp ~/.vimrc ./
 cp -rf ~/.vim ./
+cp ~/.oh-my-zsh/themes/robbyrussell.zsh-theme ./
 rm .vim/.netrwhist
 cp ~/.gitconfig ./
 cp ~/.tmux.conf ./
