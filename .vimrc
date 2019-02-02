@@ -58,6 +58,12 @@ set ttyfast
 " Remap `jj` to Esc
 imap jj <Esc>
 
+" Remap :W to write
+command! W  write
+
+" Remap :Q to quit
+command! Q q
+
 set grepprg=ack\ -a " ack to search
 
 " Search
