@@ -20,6 +20,7 @@ install_app() {
 personal_apps=(
     "arc"
     "flycut"
+    "font-meslo-lg-nerd-font"
     "iterm2"
     "keeper-password-manager"
     "messenger"
@@ -52,10 +53,16 @@ for app in "${personal_apps[@]}"; do
     install_app "$app"
 done
 
-# Install work apps
-echo "💼 Installing work applications..."
-for app in "${work_apps[@]}"; do
-    install_app "$app"
-done
+# Prompt for work apps installation
+read -p "Do you want to install work applications? (y/n): " install_work_apps
+
+if [[ $install_work_apps =~ ^[Yy]$ ]]; then
+    echo "💼 Installing work applications..."
+    for app in "${work_apps[@]}"; do
+        install_app "$app"
+    done
+else
+    echo "Skipping work applications installation."
+fi
 
 echo "Installation complete! 🎉"

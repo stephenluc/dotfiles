@@ -1,38 +1,3 @@
-" VUNDLE
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Plugins
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
-Plugin 'groenewege/vim-less'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'RRethy/vim-illuminate'
-
-" Backend
-Plugin 'hynek/vim-python-pep8-indent'
-
-" Color schemes
-Plugin 'w0ng/vim-hybrid'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 " display settings
 set encoding=utf-8 "encoding used for displaying file
 " set list " show whitespace as characters
@@ -64,6 +29,9 @@ command! W  write
 " Remap :Q to quit
 command! Q q
 
+" Remap :Wq to write and quit
+command! Wq wq
+
 set grepprg=ack\ -a " ack to search
 
 " Search
@@ -90,14 +58,6 @@ if exists("g:ctrlp_user_command")
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tz,*.tar,*/lib/*,*/bin/*,*/djcelery/*,*/docs/*,*/docx-template/*,*/include/*,*/lib/*,*/lib64/*,*/local/*,*/log/*,*/man/*,*/node_modules/*,*/selenium/*,*/__pycache__/*
 let g:ctrlp_custom_ignore = '[\/](node_modules|lib|lib64)|\v[\/]\.(git|hg|svn)$'
-
-" Colorscheme
-syntax on
-let &t_Co = 256
-set background=dark
-"let g:hybrid_custom_term_colors = 1
-"let g:hybrid_reduced_contrast = 1
-colorscheme hybrid
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *

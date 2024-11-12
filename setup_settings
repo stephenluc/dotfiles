@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git submodule init
-git submodule update
-
 ./push_settings
+sh ./dev-tools-setup.sh
+sh ./github-ssh-setup.sh
+sh ./install-apps.sh

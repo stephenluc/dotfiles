@@ -1,9 +1,5 @@
 #!/bin/bash
 
 cp .gitconfig ~/
-cp -rf .vim ~/
-cp robbyrussell.zsh-theme ~/.oh-my-zsh/themes/
 cp .vimrc ~/
-cp .tmux.conf ~/
-
-vim +PluginInstall +qall
+cp .zshrc ~/
