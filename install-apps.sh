@@ -6,6 +6,7 @@ brew install --cask iterm2
 brew install --cask raycast
 brew install --cask keeper-password-manager
 brew install --cask messenger
+brew install --cask spotify
 
 # Work
 brew install --cask cursor
