@@ -12,3 +12,4 @@ brew install --cask cursor
 brew install --cask slack
 brew install --cask mongodb-compass
 brew install --cask postman
+brew install --cask obsidian
