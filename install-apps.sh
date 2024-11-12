@@ -20,20 +20,20 @@ install_app() {
 personal_apps=(
     "arc"
     "flycut"
-    "rectangle"
     "iterm2"
-    "raycast"
     "keeper-password-manager"
     "messenger"
+    "raycast"
+    "rectangle"
     "spotify"
 )
 
 work_apps=(
     "cursor"
-    "slack"
-    "mongodb-compass"
-    "postman"
+    "mongodb-compass" 
     "obsidian"
+    "postman"
+    "slack"
 )
 
 # Check if Homebrew is installed
