@@ -2,5 +2,6 @@
 
 cp ~/.vimrc ./
 cp ~/.gitconfig ./
+cp ~/.zshrc ./
 
 git s
