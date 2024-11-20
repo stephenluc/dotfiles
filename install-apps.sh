@@ -30,11 +30,16 @@ personal_apps=(
 )
 
 work_apps=(
+    "cloudflare-warp"
     "cursor"
+    "drata-agent"
+    "linear-linear"
     "mongodb-compass" 
     "obsidian"
     "postman"
     "slack"
+    "tandem"
+    "zoom"
 )
 
 # Check if Homebrew is installed
