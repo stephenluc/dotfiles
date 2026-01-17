@@ -18,12 +18,11 @@ install_app() {
 
 # Rest of your arrays and code remains the same...
 personal_apps=(
-    "arc"
+    "firefox"
     "flycut"
     "font-meslo-lg-nerd-font"
     "iterm2"
-    "keeper-password-manager"
-    "messenger"
+    "1password"
     "raycast"
     "rectangle"
     "spotify"
