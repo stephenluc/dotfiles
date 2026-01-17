@@ -16,8 +16,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install curl
     brew install tree
     brew install spaceship
-    brew install mongosh
-    brew install withgraphite/tap/graphite # TODO: Find out if it's useful
+    # brew install mongosh
+    # brew install withgraphite/tap/graphite # TODO: Find out if it's useful
     
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
