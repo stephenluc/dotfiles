@@ -8,6 +8,8 @@ brew "tmux"
 brew "oven-sh/bun/bun"
 brew "fzf"
 brew "gh"
+brew "neovim"
+brew "ripgrep"
 
 # Personal apps
 cask "firefox"

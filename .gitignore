@@ -11,3 +11,5 @@
 !*.md
 !iterm2/
 !iterm2/**
+!nvim/
+!nvim/**

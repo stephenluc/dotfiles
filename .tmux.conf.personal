@@ -3,6 +3,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'Ataraxy-Labs/opensessions'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # opensessions sessionizer search root
 set-environment -g SESSIONIZER_DIR "$HOME"
@@ -46,7 +47,9 @@ set -g mode-keys vi
 set -g set-clipboard on
 
 # Visual
-set -g default-terminal "screen-256color"
+set -g default-terminal "tmux-256color"
+set -s extended-keys on
+set -as terminal-features ',xterm*:extkeys'
 
 # Dim inactive panes
 set -g window-style 'bg=colour235'

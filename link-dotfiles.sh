@@ -23,6 +23,11 @@ for file in "$DOTFILES_DIR"/.*; do
     echo "Linked $filename"
 done
 
+# Symlink nvim config directory
+mkdir -p "$HOME/.config"
+ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+echo "Linked nvim config"
+
 # Helper: prepend a source line to a file if not already present
 prepend_source() {
     local source_line="$1"
