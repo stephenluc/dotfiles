@@ -6,6 +6,7 @@ brew "tree"
 brew "spaceship"
 brew "tmux"
 brew "oven-sh/bun/bun"
+brew "fzf"
 brew "gh"
 
 # Personal apps

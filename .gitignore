@@ -1,9 +1,9 @@
 *
 !.gitconfig
 !.gitignore
-!.tmux.conf
+!.tmux.conf.personal
 !.vimrc
-!.zshrc
+!.zshrc.personal
 !Brewfile
 !Brewfile.work
 !*.sh

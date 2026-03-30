@@ -24,6 +24,14 @@ alias "gph"="git push"
 alias "gpl"="git pull"
 alias "gwt"="git worktree"
 
+# Start detached tmux session in current or given directory
+ts() {
+  local dir="${1:-.}"
+  dir=$(cd "$dir" && pwd)
+  local name="${2:-$(basename "$dir")}"
+  tmux new-session -d -s "$name" -c "$dir" && echo "Started session: $name"
+}
+
 # Load the Spaceship prompt theme (skip in Warp -- it has its own prompt bar)
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   source /opt/homebrew/opt/spaceship/spaceship.zsh
@@ -41,3 +49,6 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   SPACESHIP_GIT_BRANCH_COLOR=magenta       # Set the git branch color to magenta
   SPACESHIP_PROMPT_ADD_NEWLINE=true        # Add a newline before each prompt
 fi
+
+# fzf shell integration (keybindings + completion)
+source <(fzf --zsh)

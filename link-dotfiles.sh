@@ -23,12 +23,33 @@ for file in "$DOTFILES_DIR"/.*; do
     echo "Linked $filename"
 done
 
-# Ensure ~/.zshrc exists and sources personal config
-PERSONAL_SOURCE='[[ -f ~/.zshrc.personal ]] && source ~/.zshrc.personal'
-touch "$HOME/.zshrc"
-if ! grep -qF '.zshrc.personal' "$HOME/.zshrc"; then
-    echo "" >> "$HOME/.zshrc"
-    echo "# Load personal config (symlinked from dotfiles repo)" >> "$HOME/.zshrc"
-    echo "$PERSONAL_SOURCE" >> "$HOME/.zshrc"
-    echo "Added .zshrc.personal source line to ~/.zshrc"
-fi
+# Helper: prepend a source line to a file if not already present
+prepend_source() {
+    local source_line="$1"
+    local target_file="$2"
+    local comment="$3"
+
+    touch "$target_file"
+    if ! grep -qF "$source_line" "$target_file"; then
+        local tmp
+        tmp=$(mktemp)
+        echo "$comment" > "$tmp"
+        echo "$source_line" >> "$tmp"
+        echo "" >> "$tmp"
+        cat "$target_file" >> "$tmp"
+        mv "$tmp" "$target_file"
+        echo "Prepended ${source_line##* } source line to $target_file"
+    fi
+}
+
+# Ensure ~/.zshrc sources personal config (at top so work overrides take precedence)
+prepend_source \
+    '[[ -f ~/.zshrc.personal ]] && source ~/.zshrc.personal' \
+    "$HOME/.zshrc" \
+    '# Load personal config (symlinked from dotfiles repo)'
+
+# Ensure ~/.tmux.conf sources personal config (at top so work overrides take precedence)
+prepend_source \
+    'source-file ~/.tmux.conf.personal' \
+    "$HOME/.tmux.conf" \
+    '# Load personal config (symlinked from dotfiles repo)'

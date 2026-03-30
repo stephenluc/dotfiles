@@ -14,7 +14,7 @@ sh setup.sh
 
 `setup.sh` runs everything in order:
 
-1. **link-dotfiles.sh** -- auto-discovers and symlinks all dotfiles (`.zshrc.personal`, `.gitconfig`, `.vimrc`, `.tmux.conf`, etc.) from this repo into `~`, and ensures `~/.zshrc` sources `~/.zshrc.personal`
+1. **link-dotfiles.sh** -- auto-discovers and symlinks all dotfiles (`.zshrc.personal`, `.gitconfig`, `.vimrc`, `.tmux.conf.personal`, etc.) from this repo into `~`, and ensures `~/.zshrc` and `~/.tmux.conf` source their `.personal` counterparts
 2. **dev-tools-setup.sh** -- installs Homebrew (if needed), runs `brew bundle` for CLI tools and personal apps, optionally installs work apps from `Brewfile.work`, installs TPM, and auto-installs tmux plugins
 3. **github-ssh-setup.sh** -- generates SSH key and uploads to GitHub via `gh` CLI
 
@@ -43,14 +43,14 @@ Add new packages by editing the appropriate Brewfile. Run `brew bundle --file=Br
 | `.zshrc.personal` | Zsh shell -- personal aliases, prompt (Spaceship), sourced by `~/.zshrc` |
 | `.gitconfig` | Git -- aliases (`gs`, `gls`), editor, colors |
 | `.vimrc` | Vim editor settings |
-| `.tmux.conf` | Tmux -- prefix `Ctrl-Space`, pane/window nav, opensessions, resurrect/continuum, status bar |
+| `.tmux.conf.personal` | Tmux -- prefix `Ctrl-Space`, pane/window nav, opensessions, resurrect/continuum, status bar |
 | `iterm_settings.json` / `iterm_settings_v2.json` | iTerm2 profile exports |
 
 ## How Symlinks Work
 
 `link-dotfiles.sh` auto-discovers all dotfiles at the repo root (excluding `.git`, `.gitignore`, `.claude`) and symlinks them into `~`. Adding a new dotfile to the repo is all you need -- no script changes required.
 
-`~/.zshrc` is not symlinked -- it's a per-machine file for work-specific config (PATH, NVM, project aliases, tokens). `link-dotfiles.sh` creates it if missing and appends a line to source `~/.zshrc.personal`, which is the symlinked personal config from this repo.
+`~/.zshrc` and `~/.tmux.conf` are not symlinked -- they're per-machine files for work-specific config. `link-dotfiles.sh` creates them if missing and prepends a line to source their `.personal` counterpart (symlinked from this repo). Work-specific settings go after the source line so they take precedence (last setting wins).
 
 ## Key Tmux Bindings
 
