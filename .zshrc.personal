@@ -32,6 +32,17 @@ ts() {
   tmux new-session -d -s "$name" -c "$dir" && echo "Started session: $name"
 }
 
+# Kill a tmux session by name, or pick one with fzf
+tk() {
+  if [ -n "$1" ]; then
+    tmux kill-session -t "$1" && echo "Killed session: $1"
+  else
+    local session
+    session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | fzf --prompt="Kill session: ")
+    [ -n "$session" ] && tmux kill-session -t "$session" && echo "Killed session: $session"
+  fi
+}
+
 # Load the Spaceship prompt theme (skip in Warp -- it has its own prompt bar)
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   source /opt/homebrew/opt/spaceship/spaceship.zsh
