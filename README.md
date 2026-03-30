@@ -1,14 +1,64 @@
 # dotfiles
 
-Since I am still in school and switch often between personal, school and work machines, it is nice to be able to set up all my different dev environments to be the same.
+Personal dotfiles for consistent dev environments across machines. Manages shell config, editor settings, tmux, git, and application installation via Homebrew.
 
-I use this to keep consistency between all my git and vim shortcuts.
+## Quick Start
 
-There a 3 primary scripts for transferring the settings around:
-* `setup_settings` - run this on any new machine to import initial settings
-* `push_settings` - run this if new settings need to be pushed onto local machine
-* `upload_settings` - run this if new local changes need to be uploaded back into the repo
+On a new machine, clone and run:
 
-Most of the settings and layouts I have were gathered from:
-1. Co-workers
-2. <https://dotfiles.github.io/>
+```bash
+git clone git@github.com:stephenluc/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+sh setup.sh
+```
+
+`setup.sh` runs everything in order:
+
+1. **link-dotfiles.sh** -- auto-discovers and symlinks all dotfiles (`.zshrc`, `.gitconfig`, `.vimrc`, `.tmux.conf`, etc.) from this repo into `~`
+2. **dev-tools-setup.sh** -- installs Homebrew (if needed), runs `brew bundle` for CLI tools and personal apps, optionally installs work apps from `Brewfile.work`, installs TPM, and auto-installs tmux plugins
+3. **github-ssh-setup.sh** -- generates SSH key and uploads to GitHub via `gh` CLI
+
+## Scripts
+
+| Script | Purpose | Interactive? |
+|--------|---------|--------------|
+| `setup.sh` | Full new-machine setup (runs all scripts below) | Yes |
+| `link-dotfiles.sh` | Auto-discover and symlink dotfiles into `~` | No |
+| `dev-tools-setup.sh` | Install all tools and apps via Brewfiles, TPM | Yes (prompts for work apps) |
+| `github-ssh-setup.sh` | Generate SSH key and upload to GitHub via `gh` | Yes |
+
+## Brewfiles
+
+| File | Contents |
+|------|----------|
+| `Brewfile` | CLI tools (git, tmux, bun, etc.) and personal apps (Firefox, iTerm2, Raycast, etc.) -- always installed |
+| `Brewfile.work` | Work apps (Slack, Cursor, Postman, Linear, etc.) -- installed only if you opt in |
+
+Add new packages by editing the appropriate Brewfile. Run `brew bundle --file=Brewfile` to install.
+
+## Config Files
+
+| File | What it configures |
+|------|--------------------|
+| `.zshrc` | Zsh shell -- aliases, prompt (Spaceship) |
+| `.gitconfig` | Git -- aliases (`gs`, `gls`), editor, colors |
+| `.vimrc` | Vim editor settings |
+| `.tmux.conf` | Tmux -- prefix `Ctrl-Space`, pane/window nav, opensessions, resurrect/continuum, status bar |
+| `iterm_settings.json` / `iterm_settings_v2.json` | iTerm2 profile exports |
+
+## How Symlinks Work
+
+`link-dotfiles.sh` auto-discovers all dotfiles at the repo root (excluding `.git`, `.gitignore`, `.claude`) and symlinks them into `~`. Adding a new dotfile to the repo is all you need -- no script changes required.
+
+## Key Tmux Bindings
+
+- Prefix: `Ctrl-Space`
+- Panes: `j`/`k` to navigate, `=`/`-` to split
+- Windows: `h`/`l` to navigate
+- Sessions: `Alt-s` to open opensessions sidebar, `Alt-1`-`9` to jump to session by index
+- Reload: `prefix + r`
+- Session persistence via tmux-resurrect and tmux-continuum (auto-restores on tmux start)
+
+## Resources
+
+- https://dotfiles.github.io/

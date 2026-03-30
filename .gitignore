@@ -1,1 +1,13 @@
 *
+!.gitconfig
+!.gitignore
+!.tmux.conf
+!.vimrc
+!.zshrc
+!Brewfile
+!Brewfile.work
+!*.sh
+!*.json
+!*.md
+!iterm2/
+!iterm2/**

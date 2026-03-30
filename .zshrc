@@ -2,9 +2,6 @@
 autoload -Uz compinit
 compinit
 
-export PATH=~/.npm-global/bin:$PATH
-export PYTHON=/opt/homebrew/opt/python@3.9/bin/python3.9
-
 # zsh aliases
 alias "szsh"="source ~/.zshrc"
 alias "vzsh"="vim ~/.zshrc"
@@ -41,3 +38,6 @@ SPACESHIP_USER_SHOW=always               # Always show the username
 SPACESHIP_DIR_TRUNC=0                    # Show the full directory path
 SPACESHIP_GIT_BRANCH_COLOR=magenta       # Set the git branch color to magenta
 SPACESHIP_PROMPT_ADD_NEWLINE=true        # Add a newline before each prompt
+
+# Load machine-specific config (not tracked in git)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
