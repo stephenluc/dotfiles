@@ -14,7 +14,7 @@ sh setup.sh
 
 `setup.sh` runs everything in order:
 
-1. **link-dotfiles.sh** -- auto-discovers and symlinks all dotfiles (`.zshrc`, `.gitconfig`, `.vimrc`, `.tmux.conf`, etc.) from this repo into `~`
+1. **link-dotfiles.sh** -- auto-discovers and symlinks all dotfiles (`.zshrc.personal`, `.gitconfig`, `.vimrc`, `.tmux.conf`, etc.) from this repo into `~`, and ensures `~/.zshrc` sources `~/.zshrc.personal`
 2. **dev-tools-setup.sh** -- installs Homebrew (if needed), runs `brew bundle` for CLI tools and personal apps, optionally installs work apps from `Brewfile.work`, installs TPM, and auto-installs tmux plugins
 3. **github-ssh-setup.sh** -- generates SSH key and uploads to GitHub via `gh` CLI
 
@@ -40,7 +40,7 @@ Add new packages by editing the appropriate Brewfile. Run `brew bundle --file=Br
 
 | File | What it configures |
 |------|--------------------|
-| `.zshrc` | Zsh shell -- aliases, prompt (Spaceship) |
+| `.zshrc.personal` | Zsh shell -- personal aliases, prompt (Spaceship), sourced by `~/.zshrc` |
 | `.gitconfig` | Git -- aliases (`gs`, `gls`), editor, colors |
 | `.vimrc` | Vim editor settings |
 | `.tmux.conf` | Tmux -- prefix `Ctrl-Space`, pane/window nav, opensessions, resurrect/continuum, status bar |
@@ -49,6 +49,8 @@ Add new packages by editing the appropriate Brewfile. Run `brew bundle --file=Br
 ## How Symlinks Work
 
 `link-dotfiles.sh` auto-discovers all dotfiles at the repo root (excluding `.git`, `.gitignore`, `.claude`) and symlinks them into `~`. Adding a new dotfile to the repo is all you need -- no script changes required.
+
+`~/.zshrc` is not symlinked -- it's a per-machine file for work-specific config (PATH, NVM, project aliases, tokens). `link-dotfiles.sh` creates it if missing and appends a line to source `~/.zshrc.personal`, which is the symlinked personal config from this repo.
 
 ## Key Tmux Bindings
 

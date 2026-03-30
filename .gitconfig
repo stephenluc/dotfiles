@@ -27,6 +27,10 @@
     name = stephenluc
     email = stephenluc96@gmail.com
 
+[push]
+
+    autoSetupRemote = true
+
 [color "diff"]
 
     meta = yellow bold

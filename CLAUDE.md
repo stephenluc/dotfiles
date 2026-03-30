@@ -4,7 +4,7 @@ This is a macOS dotfiles repo. All config files live at the repo root and are sy
 
 ## Repo Structure
 
-- **Dotfiles**: `.zshrc`, `.gitconfig`, `.vimrc`, `.tmux.conf` -- symlinked to `~` automatically
+- **Dotfiles**: `.zshrc.personal`, `.gitconfig`, `.vimrc`, `.tmux.conf` -- symlinked to `~` automatically
 - **Brewfiles**: `Brewfile` (tools + personal apps), `Brewfile.work` (work apps, optional)
 - **Scripts**: `setup.sh` (entrypoint), `link-dotfiles.sh`, `dev-tools-setup.sh`, `github-ssh-setup.sh`
 - **iTerm**: `iterm_settings.json`, `iterm_settings_v2.json`, `iterm2/` -- exported iTerm2 profiles
@@ -17,6 +17,9 @@ This is a macOS dotfiles repo. All config files live at the repo root and are sy
 - Excluded from symlinking: `.git`, `.gitignore`, `.claude`, and directories
 - All packages (CLI tools and GUI apps) are declared in `Brewfile` or `Brewfile.work` -- installed via `brew bundle`
 - Shell is zsh with Spaceship prompt
+- `~/.zshrc` is work-specific (PATH, NVM, project aliases, tokens) -- not tracked, managed per machine
+- `.zshrc.personal` in the repo is personal config (git aliases, prompt theme) -- symlinked to `~/.zshrc.personal`
+- `~/.zshrc` sources `~/.zshrc.personal` at the end; `link-dotfiles.sh` appends the source line if missing
 - Tmux prefix is `Ctrl-Space`, uses TPM for plugins
 - Tmux plugins: opensessions (Ataraxy-Labs/opensessions, requires bun), tmux-resurrect, tmux-continuum
 - SSH setup uses `gh` CLI to upload keys to GitHub automatically
