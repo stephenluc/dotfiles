@@ -48,10 +48,18 @@ opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.swapfile = false
 
+-- Project-local config (.nvim.lua)
+opt.exrc = true
+
 -- Misc
 vim.o.autoread = true
 opt.ttimeoutlen = 50
 opt.backspace = "indent,eol,start"
+
+-- Auto-reload files changed outside nvim
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  command = "checktime",
+})
 
 -- Restore last edit position when opening a file
 vim.api.nvim_create_autocmd("BufReadPost", {
