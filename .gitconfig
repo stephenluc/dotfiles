@@ -31,6 +31,17 @@
 
     autoSetupRemote = true
 
+[pull]
+
+    # Rebase local commits on top of the upstream instead of merging on pull
+    rebase = true
+
+[rebase]
+
+    # Restack dependent branches in a single rebase (git 2.38+): also moves any
+    # intermediate branch refs in the range -- the native "stacked PR" restack
+    updateRefs = true
+
 [color "diff"]
 
     meta = yellow bold
